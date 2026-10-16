@@ -446,10 +446,23 @@ input, select, textarea { font: inherit; color: inherit; }
 .reel-grid--side { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .reel-grid--side .reel-meta { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 .reel-grid--side .reel-title { font-size: 1.2rem; }
-/* promotion page: the reel shown large beside the intro (same treatment as the featured reel on reels.html) */
-.promo-reel { width: min(100%, 400px); margin-inline: auto; }
-.promo-reel .reel-play { width: 84px; height: 84px; }
-.promo-reel .reel-title { font-size: 2rem; }
+/* promotion page — hero arch that links to the reel (reuses .hero-arch / .reel-play / .reel-pill) */
+.promo-arch a { position: relative; display: block; width: 100%; height: 100%; }
+.promo-arch a::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(24, 14, 18, 0.5), transparent 38%); pointer-events: none; }
+/* YouTube's thumbnail for a Short is a 16:9 frame: the vertical video sits in the middle ~32% with blurred bars either side.
+   The arch is taller than that, so zoom in until the video alone fills it (uses transform, not the `scale` property the reveal animation owns) */
+.promo-arch img { transform: scale(1.4); transform-origin: 50% 30%; transition: transform 1s var(--ease); }
+.promo-arch a:hover img { transform: scale(1.47); }
+.promo-arch .reel-play { width: clamp(72px, 7vw, 92px); height: clamp(72px, 7vw, 92px); }
+.promo-arch a:hover .reel-play { transform: scale(1.14); background: var(--claret); color: var(--ivory); }
+.promo-arch .reel-pill { top: auto; bottom: 7%; left: 50%; translate: -50% 0; white-space: nowrap; }
+/* promotion page — collab photo gallery: CSS columns, each column holds one tall + one portrait photo so they end level */
+.collab-grid { column-count: 4; column-gap: var(--gap); }
+.collab-item { position: relative; display: block; overflow: hidden; margin-bottom: var(--gap); break-inside: avoid; border-radius: var(--r-md); background: var(--blush); }
+.collab-item--tall { aspect-ratio: 2 / 3; }
+.collab-item--portrait { aspect-ratio: 3 / 4; }
+.collab-item img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 30%); }
+@media (max-width: 960px) { .collab-grid { column-count: 2; } }
 
 .filter-bar { position: relative; z-index: 40; padding-block: 1rem; border-block: 1px solid var(--line); background: var(--ivory); }
 .filter-list { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
