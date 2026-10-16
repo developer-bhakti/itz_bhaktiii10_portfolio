@@ -446,6 +446,10 @@ input, select, textarea { font: inherit; color: inherit; }
 .reel-grid--side { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .reel-grid--side .reel-meta { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 .reel-grid--side .reel-title { font-size: 1.2rem; }
+/* promotion page: the reel shown large beside the intro (same treatment as the featured reel on reels.html) */
+.promo-reel { width: min(100%, 400px); margin-inline: auto; }
+.promo-reel .reel-play { width: 84px; height: 84px; }
+.promo-reel .reel-title { font-size: 2rem; }
 
 .filter-bar { position: relative; z-index: 40; padding-block: 1rem; border-block: 1px solid var(--line); background: var(--ivory); }
 .filter-list { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
