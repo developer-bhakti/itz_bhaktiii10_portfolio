@@ -463,6 +463,10 @@ input, select, textarea { font: inherit; color: inherit; }
 .collab-item--portrait { aspect-ratio: 3 / 4; }
 .collab-item img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 30%); }
 @media (max-width: 960px) { .collab-grid { column-count: 2; } }
+/* three-photo version: a row of three, stacked on phones */
+.collab-grid--3 { column-count: 3; }
+@media (max-width: 960px) { .collab-grid--3 { column-count: 3; } }
+@media (max-width: 600px) { .collab-grid--3 { column-count: 1; max-width: 420px; margin-inline: auto; } }
 
 .filter-bar { position: relative; z-index: 40; padding-block: 1rem; border-block: 1px solid var(--line); background: var(--ivory); }
 .filter-list { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
